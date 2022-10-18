@@ -1,0 +1,30 @@
+.footer__github-single {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+  align-items: center;
+}
+
+.github__link {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  transition-duration: 0.4s;
+  color: var(--color-light);
+}
+
+.github__link:hover {
+  color: var(--color-shadow);
+}
+
+.github__icon {
+  min-width: 22px;
+  min-height: 22px;
+  transition-duration: 0.4s;
+}
+
+.github__link:hover > .github__icon {
+  fill: var(--color-shadow);
+}

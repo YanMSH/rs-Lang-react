@@ -1,0 +1,30 @@
+.about-us__card {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: 380px;
+  color: #ffffff;
+}
+
+.card__pic-container {
+  width: 136px;
+  height: 136px;
+}
+
+.card__pic {
+  width: 136px;
+  height: 136px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.card__text-name {
+  font-weight: 700;
+}
+
+.card__mentor {
+  width: 760px;
+  text-align: center;
+  align-items: center;
+  color: var(--color-black);
+}

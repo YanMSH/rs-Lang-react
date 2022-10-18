@@ -1,0 +1,27 @@
+.block__title {
+  font-size: 48px;
+  font-family: var(--font-title);
+}
+
+.about-us {
+  width: 100%;
+  background: linear-gradient(40.72deg, #f9db6d 17.25%, #6667ab 49.85%);
+  padding: 84px 0;
+}
+
+.about-us__title {
+  color: #ffffff;
+  width: 1230px;
+  margin: 0 auto;
+}
+
+.about-us__card-container {
+  font-size: 28px;
+  font-family: var(--font-text);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 45px;
+  width: 1230px;
+  margin: 84px auto 0;
+}
