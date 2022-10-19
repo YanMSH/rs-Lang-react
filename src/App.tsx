@@ -1,7 +1,6 @@
 import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
-import AboutUs from 'pages/welcome/AboutUs';
-import WelcomeBanner from 'pages/welcome/WelcomeBanner';
+import WelcomePage from 'pages/welcome/WelcomePage';
 import React from 'react';
 import classes from './App.module.css';
 
@@ -9,8 +8,7 @@ function App() {
   return (
     <div className={classes.app}>
       <Header />
-      <WelcomeBanner />
-      <AboutUs />
+      <WelcomePage />
       <Footer />
     </div>
   );
