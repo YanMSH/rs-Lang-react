@@ -1,0 +1,122 @@
+.app__controls {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.app__hard-page {
+  background-color: rgba(220, 53, 69, 0.2);
+}
+
+.app_learned-page {
+  background-color: rgba(40, 167, 69, 0.2);
+}
+
+.textbook__title {
+  text-align: center;
+  font-size: 32px;
+  font-family: var(--font-title);
+  color: var(--color-black);
+  font-weight: 700;
+}
+
+.textbook__control-panel {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.control__button {
+  display: block;
+  width: 40px;
+  height: 40px;
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--color-black);
+  border: none;
+  outline: none;
+  background-color: #f2f2f2;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.control__button:hover {
+  filter: brightness(1.1);
+}
+
+.controls-current {
+  pointer-events: none;
+  background-color: var(--color-primary);
+  color: var(--color-accent);
+}
+
+.group__controls-disabled {
+  pointer-events: none;
+
+  opacity: 0.4;
+  cursor: default;
+}
+
+.game__controls {
+  display: flex;
+  gap: 16px;
+}
+
+.game__button {
+  width: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.cards__container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 32px auto 112px;
+  gap: 60px;
+  width: 1200px;
+}
+
+@media screen and (max-width: 1300px) {
+  .cards__container {
+    width: 100%;
+  }
+  .app__controls {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .app__controls {
+    width: 90%;
+    margin: 0 auto;
+    flex-direction: column;
+  }
+  .cards__container {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+  }
+  .control__button {
+    width: 30px;
+    height: 30px;
+  }
+  .card {
+    max-width: 300px;
+  }
+  .game__controls {
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100px;
+  }
+  .game-sprint {
+    justify-self: center;
+  }
+  .game__button {
+    display: block;
+  }
+}
