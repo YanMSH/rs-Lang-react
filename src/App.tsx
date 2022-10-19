@@ -1,5 +1,6 @@
 import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
+import RegistrationForm from 'pages/registration/RegistrationForm';
 import Textbook from 'pages/textbook/Textbook';
 import WelcomePage from 'pages/welcome/WelcomePage';
 import React from 'react';
@@ -9,7 +10,7 @@ function App() {
   return (
     <div className={classes.app}>
       <Header />
-      <Textbook />
+      <RegistrationForm />
       <Footer />
     </div>
   );
