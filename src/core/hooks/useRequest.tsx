@@ -16,21 +16,24 @@ export const useRequest = () => {
         const response = await fetch(options.url, {
           method: options.method ? options.method : 'GET',
           body: options.body ? JSON.stringify(options.body) : null,
-          headers: options.method ? { 'Content-Type': 'application/json' } : {},
+          headers: options.method
+            ? { Accept: 'application/json', 'Content-Type': 'application/json' }
+            : {},
         });
 
         if (!response.ok) {
-          throw new Error('Request failed!');
+          throw new Error(response.status.toString());
         }
-
+        console.log('response:', response);
         const data = await response.json();
 
         applyData(data);
       } catch (err: unknown) {
         if ((err as Error).message) {
           setError((err as Error).message);
+        } else {
+          setError('Something went wrong');
         }
-        setError('Something went wrong!');
       }
       setIsLoading(false);
     },
