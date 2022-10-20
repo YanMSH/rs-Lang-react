@@ -1,6 +1,9 @@
 import Input from 'components/Input';
+import { Requests, serverURL } from 'core/constants/loader-constants';
 import { useInput } from 'core/hooks/useInput';
-import React, { useState } from 'react';
+import useRequest from 'core/hooks/useRequest';
+import { userRegData } from 'pages/auth/AuthTypes';
+import React, { useCallback, useEffect, useState } from 'react';
 import ClassLister from 'utils/ClassLister';
 import { emailValidation, passValidation, userNameValidation } from 'utils/Validation';
 import classes from './RegistrationForm.module.css';
@@ -8,6 +11,8 @@ import classes from './RegistrationForm.module.css';
 const RegistrationForm: React.FC = () => {
   const classList = ClassLister(classes);
   const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<null | string>(null);
+  const { isLoading, error, sendRequest: fetchRegistration } = useRequest();
   const {
     enteredValueHandler: userNameHandler,
     inputTouchedHandler: userNameTouchedHandler,
@@ -52,13 +57,51 @@ const RegistrationForm: React.FC = () => {
       return;
     }
 
-    console.log({
-      userName,
-      pass,
-      passConfirm,
-      email,
-    });
+    const handleRegistrationResponse = (data: userRegData) => {
+      console.log('data:', data);
+      if (data) {
+        setErrorMessage(null);
+      } else {
+        console.log(error);
+        switch (error) {
+          case '417':
+            setErrorMessage('Пользователь с таким Email уже зарегистрирован!');
+            break;
+          case '401':
+            setErrorMessage('Неизвестная ошибка. Попробуйте еще раз.');
+            break;
+        }
+      }
+    };
+    fetchRegistration(
+      {
+        url: serverURL + 'users',
+        method: Requests.post,
+        body: { name: userName, email: email, password: pass },
+      },
+      handleRegistrationResponse
+    );
+    setShowErrorMessage(false);
   };
+
+  const ErrorHandler = useCallback((): void => {
+    if (error) {
+      switch (error) {
+        case '417':
+          setErrorMessage('Пользователь с таким Email уже зарегистрирован!');
+          break;
+        case '401':
+          setErrorMessage('Неизвестная ошибка. Попробуйте еще раз.');
+          break;
+      }
+    } else {
+      // TO DO Redirect to auth page or automatise auth and then redirect!
+      setErrorMessage(null);
+    }
+  }, [error]);
+  useEffect(() => {
+    ErrorHandler();
+  }, [ErrorHandler, error]);
 
   return (
     <div className={classList('form__container', 'reg__form-container')}>
@@ -99,7 +142,9 @@ const RegistrationForm: React.FC = () => {
         <button type="submit" className={classList('reg__submit', 'form__button')}>
           Зарегистрироваться
         </button>
+        {isLoading && <p>Загрузка...</p>}
         {showErrorMessage && <p>Сообщение об ошибке</p>}
+        {errorMessage && <p>{errorMessage}</p>}
       </form>
     </div>
   );

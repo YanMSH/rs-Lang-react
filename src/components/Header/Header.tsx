@@ -19,15 +19,15 @@ const Header: React.FC = () => {
           </a>
         </h1>
         <nav className={classes.header__nav}>
-          <HeaderLink iconPath={learnIcon} textContent="Учиться" />
-          <HeaderLink iconPath={playIcon} textContent="Играть">
+          <HeaderLink linkTo="/textbook" iconPath={learnIcon} textContent="Учиться" />
+          <HeaderLink linkTo="/textbook" iconPath={playIcon} textContent="Играть">
             <Fragment>
               <HeaderLink iconPath={sprintIcon} textContent="Спринт" dropdown={true} />
               <HeaderLink iconPath={audiocallIcon} textContent="Аудио-вызов" dropdown={true} />
             </Fragment>
           </HeaderLink>
           <HeaderLink iconPath={statsIcon} textContent="Статистика" />
-          <HeaderLink iconPath={loginIcon} textContent="Войти" />
+          <HeaderLink linkTo="/auth" iconPath={loginIcon} textContent="Войти" />
         </nav>
       </div>
     </header>

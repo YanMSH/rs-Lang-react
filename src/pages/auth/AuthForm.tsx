@@ -3,6 +3,7 @@ import { Requests, serverURL } from 'core/constants/loader-constants';
 import { useInput } from 'core/hooks/useInput';
 import useRequest from 'core/hooks/useRequest';
 import React, { useCallback, useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import ClassLister from 'utils/ClassLister';
 import { storeSet } from 'utils/LocalStorageFuncs';
 import { emailValidation, passValidation } from 'utils/Validation';
@@ -102,9 +103,9 @@ const AuthForm: React.FC = () => {
       </form>
       <p className={classes.reg__hint}>
         Нет аккаунта?{' '}
-        <a className={classes.reg__link} href="#">
-          Зарегистрируйтесь!
-        </a>
+        <span className={classes.reg__link}>
+          <NavLink to="/registration">Зарегистрируйтесь!</NavLink>
+        </span>
       </p>
       {isLoading && <p>Загрузка...</p>}
       {showErrorMessage && <p>Сообщение об ошибке</p>}

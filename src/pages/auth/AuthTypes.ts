@@ -18,3 +18,9 @@ export type StoreAuthData = {
   token: string;
   refreshToken: string;
 };
+
+export type userRegData = {
+  name: string;
+  email: string;
+  password: string;
+};
