@@ -1,0 +1,25 @@
+.control__button {
+  display: block;
+  width: 40px;
+  height: 40px;
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--color-black);
+  border: none;
+  outline: none;
+  background-color: #f2f2f2;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.control__button:hover {
+  filter: brightness(1.1);
+}
+
+@media screen and (max-width: 768px) {
+  .control__button {
+    width: 30px;
+    height: 30px;
+  }
+}

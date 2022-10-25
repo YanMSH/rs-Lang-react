@@ -1,0 +1,46 @@
+.control__button {
+  display: block;
+  width: 40px;
+  height: 40px;
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--color-black);
+  border: none;
+  outline: none;
+  background-color: #f2f2f2;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.control__button:hover {
+  filter: brightness(1.1);
+}
+
+.game__button {
+  width: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 1300px) {
+  .cards__container {
+    width: 100%;
+  }
+  .app__controls {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .control__button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .game__button {
+    display: block;
+  }
+}

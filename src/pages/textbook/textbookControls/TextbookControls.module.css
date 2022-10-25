@@ -1,0 +1,31 @@
+.app__controls {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.game__controls {
+  display: flex;
+  gap: 16px;
+}
+
+@media screen and (max-width: 1300px) {
+  .app__controls {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .app__controls {
+    width: 90%;
+    margin: 0 auto;
+    flex-direction: column;
+  }
+
+  .game__controls {
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100px;
+  }
+}
