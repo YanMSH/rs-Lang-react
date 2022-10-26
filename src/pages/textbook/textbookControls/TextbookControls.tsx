@@ -1,46 +1,71 @@
+import { useAppDispatch, useAppSelector } from 'core/hooks/redux';
 import React, { FC, useReducer, useState } from 'react';
+import { textbookSlice } from 'store/reducers/TextbookSlice';
 import ClassLister from 'utils/ClassLister';
 import { LAST_PAGE, pageReducer, Pagination } from 'utils/Pagination';
 import GameButton from './GameButton';
 import TextbookControlButton from './TextbookControlButton';
 import classes from './TextbookControls.module.css';
 const TextbookControls: FC = () => {
-  const initialPageState = 1;
-  const [currentPage, dispatchPageAction] = useReducer(pageReducer, initialPageState);
+  const { page } = useAppSelector((state) => state.textbookReducer);
+  const { nextPage, prevPage, setPage } = textbookSlice.actions;
+  const dispatch = useAppDispatch();
 
-  const nextPageHandler = () => {
-    dispatchPageAction({ type: 'NEXT' });
-  };
-  const previousPageHandler = () => {
-    dispatchPageAction({ type: 'PREVIOUS' });
-  };
-  const lastPageHandler = () => {
-    dispatchPageAction({ type: 'LAST' });
-  };
-  const prelastPageHandler = () => {
-    dispatchPageAction({ type: 'PRELAST' });
-  };
-  const nextNextPageHandler = () => {
-    dispatchPageAction({ type: 'NEXTNEXT' });
-  };
+  // const initialPageState = 1;
+  // const [currentPage, dispatchPageAction] = useReducer(pageReducer, initialPageState);
 
-  const handlerPicker = (value: string | number) => {
+  // const nextPageHandler = () => {
+  //   dispatchPageAction({ type: 'NEXT' });
+  // };
+  // const previousPageHandler = () => {
+  //   dispatchPageAction({ type: 'PREVIOUS' });
+  // };
+  // const lastPageHandler = () => {
+  //   dispatchPageAction({ type: 'LAST' });
+  // };
+  // const prelastPageHandler = () => {
+  //   dispatchPageAction({ type: 'PRELAST' });
+  // };
+  // const nextNextPageHandler = () => {
+  //   dispatchPageAction({ type: 'NEXTNEXT' });
+  // };
+
+  // const handlerPicker = (value: string | number) => {
+  //   switch (value) {
+  //     case 'Next':
+  //       return nextPageHandler;
+  //     case 'Previous':
+  //       return previousPageHandler;
+  //     case '...':
+  //       return nextNextPageHandler;
+  //     case LAST_PAGE:
+  //       return lastPageHandler;
+  //     case LAST_PAGE - 1:
+  //       return prelastPageHandler;
+  //     case currentPage + 1:
+  //       return nextPageHandler;
+  //   }
+  //   return nextPageHandler;
+  // };
+
+  const handlerPicker = (value: string | number): (() => void) => {
     switch (value) {
       case 'Next':
-        return nextPageHandler;
+        return () => dispatch(nextPage(1));
       case 'Previous':
-        return previousPageHandler;
+        return () => dispatch(prevPage(1));
       case '...':
-        return nextNextPageHandler;
+        return () => dispatch(nextPage(2));
       case LAST_PAGE:
-        return lastPageHandler;
+        return () => dispatch(setPage(30));
       case LAST_PAGE - 1:
-        return prelastPageHandler;
-      case currentPage + 1:
-        return nextPageHandler;
+        return () => dispatch(setPage(29));
+      case page + 1:
+        return () => dispatch(nextPage(1));
     }
-    return nextPageHandler;
+    return () => dispatch(nextPage(1));
   };
+
   const classList = ClassLister(classes);
   const groups = ['1', '2', '3', '4', '5', '6', '7'];
   return (
@@ -55,7 +80,7 @@ const TextbookControls: FC = () => {
         <GameButton gameName="Аудио-вызов" />
       </div>
       <div className={classList('page__controls', 'textbook__control-panel')}>
-        {Pagination(currentPage).map((item) => {
+        {Pagination(page).map((item) => {
           return (
             <TextbookControlButton
               text={item.toString()}

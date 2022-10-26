@@ -8,6 +8,7 @@ import { AudioCallIcon } from './GameIcons';
 import classes from './Textbook.module.css';
 import TextbookCard from './TextbookCard';
 import TextbookControls from './textbookControls/TextbookControls';
+import { useAppSelector } from 'core/hooks/redux';
 
 type Word = {
   audio: string;
