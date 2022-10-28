@@ -6,6 +6,7 @@ import classes from './Textbook.module.css';
 import TextbookCard from './TextbookCard';
 import TextbookControls from './textbookControls/TextbookControls';
 import { useAppSelector } from 'core/hooks/redux';
+import useAxios from 'core/hooks/useAxios';
 
 type Word = {
   audio: string;
@@ -27,7 +28,7 @@ type Word = {
 const Textbook: React.FC = () => {
   const { page, group } = useAppSelector((state) => state.textbookReducer);
   const [words, setWords] = useState<Word[]>([]);
-  const { isLoading, error, sendRequest: fetchWords } = useRequest();
+  const { isLoading, error, sendRequest: fetchWords } = useAxios();
 
   useEffect(() => {
     const getWords = (wordsArr: Word[]): void => {
