@@ -2,9 +2,6 @@ import { serverURL } from 'core/constants/loader-constants';
 import useRequest from 'core/hooks/useRequest';
 import React, { Fragment } from 'react';
 import { useEffect, useState } from 'react';
-import ClassLister from 'utils/ClassLister';
-import GameButton from './textbookControls/GameButton';
-import { AudioCallIcon } from './GameIcons';
 import classes from './Textbook.module.css';
 import TextbookCard from './TextbookCard';
 import TextbookControls from './textbookControls/TextbookControls';
@@ -28,7 +25,7 @@ type Word = {
 };
 
 const Textbook: React.FC = () => {
-  const classList = ClassLister(classes);
+  const { page, group } = useAppSelector((state) => state.textbookReducer);
   const [words, setWords] = useState<Word[]>([]);
   const { isLoading, error, sendRequest: fetchWords } = useRequest();
 
@@ -36,8 +33,8 @@ const Textbook: React.FC = () => {
     const getWords = (wordsArr: Word[]): void => {
       setWords(wordsArr);
     };
-    fetchWords({ url: serverURL + 'words' }, getWords);
-  }, [fetchWords]);
+    fetchWords({ url: serverURL + `words?page=${page - 1}&group=${group - 1}` }, getWords);
+  }, [fetchWords, page, group]);
   console.log(words);
   return (
     <Fragment>
@@ -62,6 +59,9 @@ const Textbook: React.FC = () => {
             />
           );
         })}
+        {/* TO DO LOADING SPINNER, ERROR STYLING */}
+        {isLoading && <p>LOADING...</p>}
+        {error && <p>SOME ERROR HAPPENED. TRY AGAIN</p>}
       </div>
     </Fragment>
   );

@@ -27,6 +27,9 @@ export const textbookSlice = createSlice({
     setPage(state, action: PayloadAction<number>) {
       state.page = action.payload;
     },
+    setGroup(state, action: PayloadAction<number>) {
+      state.group = action.payload;
+    },
   },
 });
 

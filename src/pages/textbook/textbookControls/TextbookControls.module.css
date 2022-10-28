@@ -6,9 +6,23 @@
   justify-content: space-between;
 }
 
+.controls {
+  width: 328px;
+}
+
 .game__controls {
   display: flex;
   gap: 16px;
+}
+
+.group__controls {
+  display: flex;
+  gap: 8px;
+}
+
+.page__controls {
+  display: flex;
+  gap: 8px;
 }
 
 @media screen and (max-width: 1300px) {

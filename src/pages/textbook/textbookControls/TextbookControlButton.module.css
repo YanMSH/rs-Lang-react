@@ -17,6 +17,14 @@
   filter: brightness(1.1);
 }
 
+.control__button[disabled] {
+  background-color: #e0e0e0;
+}
+
+.control__button[disabled]:hover {
+  filter: none;
+}
+
 @media screen and (max-width: 768px) {
   .control__button {
     width: 30px;
