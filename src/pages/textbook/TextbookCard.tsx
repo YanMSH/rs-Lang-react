@@ -1,5 +1,4 @@
 import React from 'react';
-import { Fragment } from 'react';
 import ClassLister from 'utils/ClassLister';
 import classes from './TextbookCard.module.css';
 const TextbookCard: React.FC<{

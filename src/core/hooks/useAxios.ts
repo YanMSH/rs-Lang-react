@@ -10,6 +10,7 @@ export const useAxios = () => {
       options: {
         url: string;
         method?: string;
+        headers?: { Authorization?: string; Accept: string; 'Content-Type': string };
         data?: { [field: string]: string };
       },
       applyData: (data: any) => void
@@ -21,9 +22,9 @@ export const useAxios = () => {
           url: options.url,
           method: options.method || 'get',
           data: options.data ? options.data : undefined,
-          headers: options.method
-            ? { Accept: 'application/json', 'Content-Type': 'application/json' }
-            : {},
+          headers: options.headers
+            ? options.headers
+            : { Accept: 'application/json', 'Content-Type': 'application/json' },
         });
         console.log(response.data);
         applyData(response.data);

@@ -6,7 +6,12 @@ export const useRequest = () => {
 
   const sendRequest = useCallback(
     async (
-      options: { url: string; method?: string; body?: { [field: string]: string } },
+      options: {
+        url: string;
+        method?: string;
+        headers?: { Accept: string; 'Content-Type': string; Authorization?: string };
+        body?: { [field: string]: string };
+      },
       applyData: (data: any) => void
       //TODO: CHECK THE TYPINGS OF THIS FUNCTION THEN ADD NO-EXPLICIT-ANY in .eslintrc.json!
     ) => {
@@ -16,9 +21,9 @@ export const useRequest = () => {
         const response = await fetch(options.url, {
           method: options.method ? options.method : 'GET',
           body: options.body ? JSON.stringify(options.body) : null,
-          headers: options.method
-            ? { Accept: 'application/json', 'Content-Type': 'application/json' }
-            : {},
+          headers: options.headers
+            ? options.headers
+            : { Accept: 'application/json', 'Content-Type': 'application/json' },
         });
 
         if (!response.ok) {

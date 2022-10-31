@@ -8,11 +8,11 @@ export const inStore = (fieldName: string): boolean => {
 };
 export const storeSet = (
   fieldName: string,
-  value: string | number | boolean | StoreAuthData
+  value: string | number | boolean | StoreAuthData | Date
 ): void => {
   localStorage.setItem(fieldName, JSON.stringify(value));
 };
-export const storeGet = (fieldName: string): string | number | null | StoreAuthData => {
+export const storeGet = (fieldName: string): string | number | null | StoreAuthData | Date => {
   if (inStore(fieldName)) {
     return JSON.parse(localStorage.getItem(fieldName) as string);
   } else {

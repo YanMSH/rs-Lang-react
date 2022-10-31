@@ -48,6 +48,7 @@ const AuthForm: React.FC = () => {
         token: data.token,
         refreshToken: data.refreshToken,
       });
+      storeSet('tokenRecieved', new Date(Date.now()));
     };
     fetchAuth(
       { url: serverURL + 'signin', method: Requests.post, body: { email: email, password: pass } },

@@ -24,3 +24,8 @@ export type userRegData = {
   email: string;
   password: string;
 };
+
+export type userRefreshedTokens = {
+  token: string;
+  refreshToken: string;
+};

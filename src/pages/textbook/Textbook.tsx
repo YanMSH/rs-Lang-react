@@ -1,5 +1,4 @@
 import { serverURL } from 'core/constants/loader-constants';
-import useRequest from 'core/hooks/useRequest';
 import React, { Fragment } from 'react';
 import { useEffect, useState } from 'react';
 import classes from './Textbook.module.css';
