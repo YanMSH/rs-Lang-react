@@ -24,6 +24,13 @@ export const authSlice = createSlice({
       // state.refreshToken = action.payload.refreshToken;
       state = action.payload;
     },
+    logOut(state, action: PayloadAction<AuthState>) {
+      state.isAuthed = false;
+      state.name = undefined;
+      state.userId = undefined;
+      state.token = undefined;
+      state.refreshToken = undefined;
+    },
   },
 });
 
