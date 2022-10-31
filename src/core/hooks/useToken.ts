@@ -29,6 +29,7 @@ export const useToken = () => {
       },
       saveNewToken
     );
+    setIsOutdated(false);
   }
-  setIsOutdated(false);
+  return { tokenIsOutdated };
 };
