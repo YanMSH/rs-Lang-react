@@ -13,7 +13,7 @@ function App() {
     <div className={classes.app}>
       <Header />
       <Routes>
-        <Route path="/welcome" element={<WelcomePage />} />
+        <Route path="/*" element={<WelcomePage />} />
         <Route path="/textbook" element={<Textbook />} />
         <Route path="/auth" element={<AuthForm />} />
         <Route path="/registration" element={<RegistrationForm />} />

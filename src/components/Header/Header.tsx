@@ -8,15 +8,16 @@ import audiocallIcon from '../../assets/svg/audiocall-icon.svg';
 import statsIcon from '../../assets/svg/stats-icon.svg';
 import loginIcon from '../../assets/svg/login-icon.svg';
 import HeaderLink from './HeaderLink';
+import { NavLink } from 'react-router-dom';
 
 const Header: React.FC = () => {
   return (
     <header className={classes.header}>
       <div className={classes.header__container}>
         <h1 className={classes.header__title}>
-          <a className={classes['header__title-link']} href="#">
+          <NavLink className={classes['header__title-link']} to="/">
             rs-Lang
-          </a>
+          </NavLink>
         </h1>
         <nav className={classes.header__nav}>
           <HeaderLink linkTo="/textbook" iconPath={learnIcon} textContent="Учиться" />

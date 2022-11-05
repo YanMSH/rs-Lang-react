@@ -2,6 +2,7 @@ import React from 'react';
 import ClassLister from 'utils/ClassLister';
 import classes from './WelcomeBanner.module.css';
 import welcomeBannerPic from '../../assets/svg/welcome-page-banner.svg';
+import { NavLink } from 'react-router-dom';
 
 const WelcomeBanner: React.FC = () => {
   const classList = ClassLister(classes);
@@ -23,7 +24,7 @@ const WelcomeBanner: React.FC = () => {
           </ul>
         </div>
         <button className={classList('welcome__banner-reg-link', 'welcome__banner-btn')}>
-          Регистрация
+          <NavLink to="/registration">Регистрация</NavLink>
         </button>
       </div>
       <div className={classList('welcome__banner-picture', 'welcome__banner-half')}>
@@ -31,7 +32,7 @@ const WelcomeBanner: React.FC = () => {
           <img src={welcomeBannerPic} />
         </div>
         <button className={classList('welcome__banner-auth-link', 'welcome__banner-btn')}>
-          Войти
+          <NavLink to="/auth">Войти</NavLink>
         </button>
       </div>
     </section>
