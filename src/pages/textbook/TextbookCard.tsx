@@ -1,6 +1,7 @@
 import React from 'react';
 import ClassLister from 'utils/ClassLister';
 import classes from './TextbookCard.module.css';
+import { serverURL } from '../../core/constants/loader-constants';
 const TextbookCard: React.FC<{
   word: string;
   transcription: string;
@@ -110,18 +111,15 @@ const TextbookCard: React.FC<{
           <div className={classList('card__example-ru')}>{props.textExampleTranslate}</div>
         </div>
       </div>
-      <img src={`https://rs-back.herokuapp.com/${props.imagePath}`} className={classes.word__pic} />
-      <audio
-        className={classes.word__audio}
-        src={`https://rs-back.herokuapp.com/${props.audioPath}`}
-      ></audio>
+      <img src={`${serverURL}${props.imagePath}`} className={classes.word__pic} />
+      <audio className={classes.word__audio} src={`${serverURL}${props.audioPath}`}></audio>
       <audio
         className={classList('word__audio-meaning')}
-        src={`https://rs-back.herokuapp.com/${props.audioMeaningPath}`}
+        src={`${serverURL}${props.audioMeaningPath}`}
       ></audio>
       <audio
         className={classList('word__audio-example')}
-        src={`https://rs-back.herokuapp.com/${props.audioExamplePath}`}
+        src={`${serverURL}${props.audioExamplePath}`}
       ></audio>
     </div>
   );
